@@ -10,18 +10,18 @@ for (let i = 0; i < 256; i++) {
     const divBlock = document.createElement('div');
     divBlock.classList.add('grid-square');
     boardGrid.appendChild(divBlock);
+
+//set up an eventlistener so that when the mouse enters the div it changes color    
+    divBlock.addEventListener('mouseover', () => {
+        divBlock.style.backgroundColor = "grey";
+    });
 }
 
-//set up an eventlistener so that when the mouse enters the div it changes color
-//we already have it styled in css, just need to add the class in the eventlistener
-const divElement = document.querySelector('.grid-square');
-divElement.addEventListener('mouseenter', () => {
-    divElement.classList.add('grid-square:hover');
-});
 
-divElement.addEventListener('mouseleave', () => {
-    divElement.classList.remove('grid-square:hover');
-});
+
+
+
+
 
 //make it so that when you hover over a div element it doesn't change immediately to grey, but slighty becomes more dark
 
