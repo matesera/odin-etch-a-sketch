@@ -1,21 +1,44 @@
 //set up a 16x16 grid of divs usig JavaScript
 
 //create 1 div with a class so that it can be styled by css
-const boardGrid = document.querySelector('.board');
-boardGrid.style.gridTemplateColumns = 'repeat(16, 1fr)';
-boardGrid.style.gridTemplateRows = 'repeat(16, 1fr)';
+function createBoard(size) {
+    const boardGrid = document.querySelector('.board');
 
+    while (boardGrid.firstChild) {
+        boardGrid.removeChild(boardGrid.firstChild);
+    }
 
-for (let i = 0; i < 256; i++) {
-    const divBlock = document.createElement('div');
-    divBlock.classList.add('grid-square');
-    boardGrid.appendChild(divBlock);
+    boardGrid.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
+    boardGrid.style.gridTemplateRows = `repeat(${size}, 1fr)`;
+
+    let amount = size * size;
+    for (let i = 0; i < amount; i++) {
+        const divBlock = document.createElement('div');
+        divBlock.classList.add('grid-square');
+        boardGrid.appendChild(divBlock);
+    
 
 //set up an eventlistener so that when the mouse enters the div it changes color    
-    divBlock.addEventListener('mouseover', () => {
-        divBlock.style.backgroundColor = "grey";
-    });
+        divBlock.addEventListener('mouseover', () => {
+            divBlock.style.backgroundColor = "grey";
+        });
+    }
 }
+
+const resizeButton = document.getElementById('resize-button');
+resizeButton.addEventListener('click', () => {
+    const gridSizeInput = document.getElementById('grid-size-input');
+    const size = parseInt(gridSizeInput.value);
+
+    if (size >= 1 && size <= 100) {
+        createBoard(size);
+    } else {
+        console.log("Choose a number between 1 and 100!");
+    }
+
+})
+
+
 
 
 
