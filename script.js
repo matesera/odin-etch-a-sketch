@@ -22,6 +22,21 @@ function createBoard(size) {
         divBlock.addEventListener('mouseover', () => {
             divBlock.style.backgroundColor = "grey";
         });
+    
+
+        const eraserButton = document.getElementById('eraser-button');
+        eraserButton.addEventListener('click', () => {
+            divBlock.addEventListener('mouseover', () => {
+                divBlock.style.backgroundColor = "white";
+            });
+        });
+
+        const colorButton = document.getElementById('color-button');
+        colorButton.addEventListener('click', () => {
+            divBlock.addEventListener('mouseover', () => {
+                divBlock.style.backgroundColor = "grey";
+            });
+        });
     }
 }
 
@@ -40,6 +55,10 @@ resizeButton.addEventListener('click', () => {
 
 
 
+
+
+
+createBoard(16);
 
 
 
