@@ -1,9 +1,9 @@
 
-
+let color = "grey";
 //create 1 div with a class so that it can be styled by css
 function createBoard(size) {
-    const boardGrid = document.querySelector('.board');
-
+    let boardGrid = document.querySelector('.board');
+    
     while (boardGrid.firstChild) {
         boardGrid.removeChild(boardGrid.firstChild);
     }
@@ -16,34 +16,8 @@ function createBoard(size) {
         const divBlock = document.createElement('div');
         divBlock.classList.add('grid-square');
         boardGrid.appendChild(divBlock);
-    
-
 //set up an eventlistener so that when the mouse enters the div it changes color    
-        divBlock.addEventListener('mouseover', () => {
-            divBlock.style.backgroundColor = "grey";
-        });
-    
-
-        const eraserButton = document.getElementById('eraser-button');
-        eraserButton.addEventListener('click', () => {
-            divBlock.addEventListener('mouseover', () => {
-                divBlock.style.backgroundColor = "white";
-            });
-        });
-        
-
-        const colorButton = document.getElementById('color-button');
-        colorButton.addEventListener('click', () => {
-            divBlock.addEventListener('mouseover', () => {
-                divBlock.style.backgroundColor = "grey";
-            });
-        });
-
-        const resetButton = document.getElementById('reset-button');
-        let divBlocks = boardGrid.querySelectorAll('div');
-        resetButton.addEventListener('click', () => {
-            divBlocks.forEach((div) => divBlock.style.backgroundColor = "white");
-        })
+        divBlock.addEventListener('mouseover', colorSquare);
     }
 }
 
@@ -60,8 +34,19 @@ resizeButton.addEventListener('click', () => {
 
 })
 
+function colorSquare() {
+    this.style.backgroundColor = color;
+}
 
+function changeColor(choice) {
+    color = choice;
+}
 
+function resetBoard() {
+    let boardGrid = document.querySelector('.board');
+    let divBlocks = boardGrid.querySelectorAll('div');
+    divBlocks.forEach((div) => div.style.backgroundColor = "white");
+}
 
 
 
