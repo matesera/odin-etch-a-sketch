@@ -1,4 +1,4 @@
-//set up a 16x16 grid of divs usig JavaScript
+
 
 //create 1 div with a class so that it can be styled by css
 function createBoard(size) {
@@ -30,6 +30,7 @@ function createBoard(size) {
                 divBlock.style.backgroundColor = "white";
             });
         });
+        
 
         const colorButton = document.getElementById('color-button');
         colorButton.addEventListener('click', () => {
@@ -37,6 +38,12 @@ function createBoard(size) {
                 divBlock.style.backgroundColor = "grey";
             });
         });
+
+        const resetButton = document.getElementById('reset-button');
+        let divBlocks = boardGrid.querySelectorAll('div');
+        resetButton.addEventListener('click', () => {
+            divBlocks.forEach((div) => divBlock.style.backgroundColor = "white");
+        })
     }
 }
 
