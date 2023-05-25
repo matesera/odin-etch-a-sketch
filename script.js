@@ -1,5 +1,6 @@
 
 let color = "grey";
+let click = true;
 //create 1 div with a class so that it can be styled by css
 function createBoard(size) {
     let boardGrid = document.querySelector('.board');
@@ -35,7 +36,9 @@ resizeButton.addEventListener('click', () => {
 })
 
 function colorSquare() {
-    this.style.backgroundColor = color;
+    if(click) {
+        this.style.backgroundColor = color;
+    }
 }
 
 function changeColor(choice) {
@@ -48,7 +51,17 @@ function resetBoard() {
     divBlocks.forEach((div) => div.style.backgroundColor = "white");
 }
 
-
+document.querySelector("body").addEventListener('click', (e) => {
+    if(e.target.tagName != 'BUTTON') {
+        click = !click;
+    if(click) {
+        document.querySelector('.mode').textContent = "Mode: Coloring";
+    } else {
+        document.querySelector('.mode').textContent = "Mode: Not Coloring";
+    }
+    }
+    
+})
 
 createBoard(16);
 
